@@ -1,3 +1,6 @@
+# Master Thesis
+[THE LANGCHAIN PARADIGM: BUILDING COST EFFECTIVE, EFFICIENT AI CHATBOT](https://github.com/NathanDestrez/Virtual-Assistant/blob/4c7c18d0c14d6fe9064a14196c2281ba582c4790/Readings/Nathan_Destrez_Master_thesis.pdf)
+
 # Virtual Assistants in Industry and Academia
 ## Advancements in Virtual Assistant Technology: The Role of LangChain and Emerging Trends
 
