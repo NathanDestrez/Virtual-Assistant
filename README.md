@@ -3,3 +3,6 @@ This repository contains the research and experimentation conducted during my in
 
 Here, you'll find the code snippets and experiments associated with my master's thesis, which explores the implementation of a Retrieval-Augmented Generation **(RAG)** architecture to develop a cost-effective AI copilot utilizing a local Large Language Model **(LLM)**.
 
+## Repo Architecture 
+
+- **Readings** : Find here my master thesis and more information about the project 
