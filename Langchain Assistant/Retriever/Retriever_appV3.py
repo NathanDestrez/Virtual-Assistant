@@ -32,7 +32,7 @@ from streamlit_star_rating import st_star_rating
 # In[112]:
 
 
-chroma_client = client = chromadb.PersistentClient(path="C:/Users/Nathan/Kratos_data-Science/Chroma/v7")
+chroma_client = client = chromadb.PersistentClient(path="Path")
 # create the open-source embedding function
 embedding_function = SentenceTransformerEmbeddings(model_name="all-MiniLM-L6-v2")
 
@@ -60,8 +60,8 @@ def create_chroma_instance(collection_name):
 # Transform the file_path using the replace_and_harmonize_path function
 def replace_and_harmonize_path(original_path: str) -> str:
     # Define the old and new beginnings
-    old_beginning = "C:/Users/Nathan/Kratos_data-Science/Projects/embeddings"
-    new_beginning = "\\\\shackleton\\scratch\\Pour Nathan"
+    old_beginning = "/OldPath"
+    new_beginning = "\\\\NewPath"
     
     # Replace the old beginning with the new one
     if old_beginning in original_path:
@@ -88,9 +88,9 @@ def reset_page():
 
 # Mapping of display names to their corresponding keys
 options_map = {
-    "QMS": "QMS-T",
-    "Skyminer": "Skyminer-T",
-    "EPOCH": "EPOCH-T"
+    "Product1": "Product1",
+    "Product2": "Product2",
+    "Product3": "Product3"
 }
 
 
@@ -253,7 +253,7 @@ def main():
             # Call the rating function for each document
             rating_key = f"rating_doc_{i}"
             submit_key = f"submit_{i}"
-            rating_value = rating("C:/Users/Nathan/app/csv_file.csv", user_question, doc.page_content, i, selected_collection, score )
+            rating_value = rating("Path.csv", user_question, doc.page_content, i, selected_collection, score )
             
             st.markdown("---")
     else:

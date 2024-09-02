@@ -55,12 +55,12 @@ def load_collections(file_path):
         data = json.load(file)
         return data.get('collections', [])
 
-available_collections = load_collections('C:/Users/Nathan_2/APP/collections.json')
+available_collections = load_collections('Path/collections.json')
 
 
 def initialize_chroma(collection_name):
     try:
-        chroma_client = chromadb.PersistentClient(path='C:/Users/Nathan_2/DL2_Kratos_data-Science/Chroma/v8')
+        chroma_client = chromadb.PersistentClient(path='Path')
         embedding_function = SentenceTransformerEmbeddings(model_name="all-MiniLM-L6-v2")
         langchain_chroma = Chroma(
             client=chroma_client,
@@ -76,8 +76,8 @@ def initialize_chroma(collection_name):
 
 @st.cache_resource
 def load_model():
-    model = AutoModelForCausalLM.from_pretrained('C:/Users/Nathan_2/DL2_Kratos_data-Science/models/mistral', device_map="auto", load_in_4bit=True)
-    tokenizer = AutoTokenizer.from_pretrained('C:/Users/Nathan_2/DL2_Kratos_data-Science/models/mistral', padding_side="left")
+    model = AutoModelForCausalLM.from_pretrained('Path', device_map="auto", load_in_4bit=True)
+    tokenizer = AutoTokenizer.from_pretrained('Path', padding_side="left")
     tokenizer.pad_token = tokenizer.eos_token
     return model, tokenizer
 
@@ -105,11 +105,11 @@ def initialize_hf_pipeline():
 
 # Mapping of display names to their corresponding keys
 options_map = {
-    "QMS": "QMS",
-    "Skyminer": "Skyminer",
-    "EPOCH": "EPOCH-T",
-    "General": "General",
-    "Python": "Python"
+    "PRODUCT1": "Product1",
+    "PRODUCT2": "Product2",
+    "PRODUCT3": "Product3",
+    "PRODUCT4": "Product4",
+    "PRODUCT5": "Product5"
 }
 
 # New chat button
@@ -149,7 +149,7 @@ prompt_templates = {
     Response: 
     """,
 
-    "Python": """
+    "PRODUCT1": """
     ignore {context}
     chat history = {history}
 
@@ -161,7 +161,7 @@ prompt_templates = {
 
     """,
 
-    "QMS": """
+    "PRODUCT2": """
     Below is an instruction that describes a task. Write a response that appropriately completes the request.
     Instruction:
     You are an assistant to answer question about the Quality Management system documentation. 
@@ -175,7 +175,7 @@ prompt_templates = {
     Response:
     """,
 
-    "Skyminer": """
+    "PRODUCT3": """
         Below is an instruction that describes a task. Write a response that appropriately completes the request.
     Instruction:
     You are an assistant to answer question about system in Skyminer documentation.
@@ -189,7 +189,7 @@ prompt_templates = {
     Response:
     """,
 
-    "EPOCH-T": """
+    "PRODUCT4": """
          Below is an instruction that describes a task. Write a response that appropriately completes the request.
     Instruction:
     You are an assistant to answer question about system in Epoch documentation.
@@ -227,7 +227,7 @@ if 'template' not in st.session_state or st.session_state.selected_collection !=
     # Initialize the retriever
     st.session_state.retriever = st.session_state.langchain_chroma.as_retriever(search_type='similarity', k=5)
 
-st.title("Kratos Chatbot")
+st.title("Chatbot")
 
 # Collection selection box
 st.sidebar.markdown(f"There are : {st.session_state.langchain_chroma._collection.count()} items in the collection")
@@ -245,7 +245,7 @@ st.sidebar.markdown("---")
 st.sidebar.warning("""
     :rotating_light: The virtual assistant communicates exclusively in English, and attempting to converse with it in French may result in nonsensical responses.
     """)
-if selected_collection == "EPOCH": 
+if selected_collection == "PRODUCTX": 
     st.sidebar.markdown("---") 
     st.sidebar.warning(
         ":rotating_light: When documentation is on shackleton "

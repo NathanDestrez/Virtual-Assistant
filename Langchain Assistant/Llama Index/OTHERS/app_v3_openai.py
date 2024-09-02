@@ -39,12 +39,12 @@ def load_collections(file_path):
         return data.get('collections', [])
 
 
-available_collections = load_collections('C:/Users/Nathan_2/APP/collections.json')
+available_collections = load_collections('Path')
 
 
 def initialize_chroma(collection_name):
     try:
-        chroma_client = chromadb.PersistentClient(path='C:/Users/Nathan_2/DL2_Kratos_data-Science/Chroma/v8')
+        chroma_client = chromadb.PersistentClient(path='Path')
         embedding_function = SentenceTransformerEmbeddings(model_name="all-MiniLM-L6-v2")
         langchain_chroma = Chroma(
             client=chroma_client,
@@ -57,7 +57,7 @@ def initialize_chroma(collection_name):
         return None, None
 
 
-llm = OpenAI(base_url="http://localhost:1234/v1",
+llm = OpenAI(base_url="Path",
              openai_api_key="not-needed",
              temperature=0,
              max_tokens=500)
@@ -191,7 +191,7 @@ if 'template' not in st.session_state or st.session_state.selected_collection !=
     # Initialize the retriever
     st.session_state.retriever = st.session_state.langchain_chroma.as_retriever(search_type='similarity', k=5)
 
-st.title("Kratos Chatbot")
+st.title("Chatbot")
 
 # Collection selection box
 st.sidebar.markdown(f"There are : {st.session_state.langchain_chroma._collection.count()} items in the collection")

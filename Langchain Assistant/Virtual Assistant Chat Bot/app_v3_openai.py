@@ -42,7 +42,7 @@ def load_collections(file_path):
 
 def initialize_chroma(collection_name):
     try:
-        chroma_client = chromadb.PersistentClient(path='C:/Users/Bruno.Pinos/Desktop/Projects/va/chroma/database/v8')
+        chroma_client = chromadb.PersistentClient(path='Path')
         embedding_function = SentenceTransformerEmbeddings(model_name="all-MiniLM-L6-v2")
         langchain_chroma = Chroma(
             client=chroma_client,
@@ -59,9 +59,9 @@ def initialize_chroma(collection_name):
 
 # Mapping of display names to their corresponding keys
 options_map = {
-    "QMS": "QMS",
-    "Skyminer": "Skyminer",
-    "EPOCH": "EPOCH-T",
+    "PRODUCT1": "Product1",
+    "PRODUCT2": "Product2",
+    "PRODUCT3": "Product3",
     "General": "General",
     "Python": "Python",
     "Translate_en_fr": "Translate_en_fr",
@@ -141,7 +141,7 @@ prompt_templates = {
     {context}
     """,
 
-    "QMS": """
+    "PRODUCT1": """
     [INST] conversation = {history} [/INST]
     [INST] documentation = {context} [/INST]
     [INST] You are an expert to answer question about the documentation. [/INST]
@@ -151,10 +151,10 @@ prompt_templates = {
     [INST] Utilize information from the documentation and the conversation to answer the question: {question}[/INST] 
     """,
 
-    "Skyminer": """
+    "PRODUCT2": """
     [INST] conversation = {history} [/INST]
     [INST] documentation = {context} [/INST]
-    [INST] You are an expert to answer question about Skyminer, a data analytics tool. [/INST]
+    [INST] You are an expert to answer question about a data analytics tool. [/INST]
     [INST] In documentation you have all the documentation of the tool. [/INST]
     [INST] If you don't know the answer respond you have insufficient data to provide a specific answer. [/INST]
     [INST] If you don't understand the question respond you don't understand the question. [/INST]
@@ -162,10 +162,10 @@ prompt_templates = {
     [INST] Utilize information from the documentation and the conversation to answer the question: {question}[/INST] 
     """,
 
-    "EPOCH-T": """
+    "PRODUCT3": """
     [INST] conversation = {history} [/INST]
     [INST] documentation = {context} [/INST]
-    [INST] You are an expert to answer question about EPOCH, a software for satellite telemetry monitoring. [/INST]
+    [INST] You are an expert to answer question about a software for satellite telemetry monitoring. [/INST]
     [INST] In documentation you have all the documentation of the software. [/INST]
     [INST] If you don't know the answer respond you have insufficient data to provide a specific answer. [/INST]
     [INST] If you don't understand the question respond you don't understand the question. [/INST]
@@ -201,7 +201,7 @@ if ('template' not in st.session_state) or (st.session_state.selected_collection
     # Initialize the retriever
     st.session_state.retriever = st.session_state.langchain_chroma.as_retriever(
         search_type="similarity_score_threshold", search_kwargs={"score_threshold": 0.2})
-    st.session_state.llm = OpenAI(base_url="http://192.168.48.32:1234/v1",
+    st.session_state.llm = OpenAI(base_url="Path",
                                   openai_api_key="not-needed",
                                   temperature=temperature,
                                   top_p=top_p,
@@ -273,7 +273,7 @@ if user_input := st.chat_input("You:", key="user_input"):
 
     retrieved_docs = st.session_state.retriever.get_relevant_documents(user_input)
 
-    if current_selection in ['Skyminer', 'QMS', 'EPOCH']:
+    if current_selection in ['Product1', 'Product2', 'Product3']:
         # Start the sources markdown with a header
         sources_markdown = "##### Sources:\n\n"
         for i, doc in enumerate(retrieved_docs):
