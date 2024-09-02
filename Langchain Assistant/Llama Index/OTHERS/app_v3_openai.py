@@ -65,9 +65,9 @@ llm = OpenAI(base_url="Path",
 
 # Mapping of display names to their corresponding keys
 options_map = {
-    "QMS": "QMS",
-    "Skyminer": "Skyminer",
-    "EPOCH": "EPOCH-T",
+    "PRODUCT1": "Product1",
+    "PRODUCT2": "Product2",
+    "PRODUCT3": "Product3",
     "General": "General",
     "Python": "Python"
 }
@@ -132,8 +132,8 @@ prompt_templates = {
 
     """,
 
-    "QMS": """Below is an instruction that describes a task. Write a response that appropriately completes the 
-    request. Instruction: You are an assistant to answer question about the Quality Management system documentation. 
+    "PRODUCT1": """Below is an instruction that describes a task. Write a response that appropriately completes the 
+    request. Instruction: You are an assistant to answer question about PRODUCT1. 
     Use only information in the following paragraphs and the conversation history to answer the question at the end. 
     Explain the answer with reference to these paragraphs and the history. If you don't have the information in 
     paragraph or in the history then give response "Insufficient data to provide a specific answer." And stop the 
@@ -145,8 +145,8 @@ prompt_templates = {
     Response:
     """,
 
-    "Skyminer": """Below is an instruction that describes a task. Write a response that appropriately completes the 
-    request. Instruction: You are an assistant to answer question about system in Skyminer documentation. Use only 
+    "PRODUCT2": """Below is an instruction that describes a task. Write a response that appropriately completes the 
+    request. Instruction: You are an assistant to answer question about system in PRODUCT2 documentation. Use only 
     information in the following paragraphs and the conversation history to answer the question at the end. Explain 
     the answer with reference to these paragraphs and the history. If you don't have the information in paragraph or 
     in the history then give response "Insufficient data to provide a specific answer".
@@ -157,8 +157,8 @@ prompt_templates = {
     Response:
     """,
 
-    "EPOCH-T": """Below is an instruction that describes a task. Write a response that appropriately completes the 
-    request. Instruction: You are an assistant to answer question about system in Epoch documentation. Use only 
+    "PRODUCT3": """Below is an instruction that describes a task. Write a response that appropriately completes the 
+    request. Instruction: You are an assistant to answer question about system in PRODUCT3 documentation. Use only 
     information in the following paragraphs and the conversation history to answer the question at the end. Explain 
     the answer with reference to these paragraphs and the history. If you don't have the information in paragraph or 
     in the history then give response "Insufficient data to provide a specific answer."
