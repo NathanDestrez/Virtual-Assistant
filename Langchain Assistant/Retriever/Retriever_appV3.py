@@ -143,7 +143,7 @@ def sidebar():
         st.markdown(
             "Document Retriever is a web application that allows you to retrieve "
             "documents in the database according to your question. The documents can "
-            "be PDFs document or HTML pages (like QMS documentation). "
+            "be PDFs document or HTML pages (like product documentation). "
         )
         
         st.markdown("---")
