@@ -164,7 +164,7 @@ prompt_templates = {
     "PRODUCT2": """
     Below is an instruction that describes a task. Write a response that appropriately completes the request.
     Instruction:
-    You are an assistant to answer question about the Quality Management system documentation. 
+    You are an assistant to answer question about the system documentation. 
     Use only information in the following paragraphs and the conversation history to answer the question at the end.
     Explain the answer with reference to these paragraphs and the history.
     If you don't have the information in paragraph or in the history then give response "Insufficient data to provide a specific answer." And stop the answer.
