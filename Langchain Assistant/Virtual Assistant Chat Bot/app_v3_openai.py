@@ -216,7 +216,7 @@ if rerun:
     rerun = False
     st.rerun()
 
-st.title("Kratos Chatbot")
+st.title("Company Chatbot")
 
 # Collection selection box
 st.sidebar.markdown(f"There are : {st.session_state.langchain_chroma._collection.count()} items in the collection")
@@ -235,7 +235,7 @@ st.sidebar.warning("""
     :rotating_light: The virtual assistant communicates exclusively in English, and attempting to converse with it in 
     French may result in nonsensical responses.
     """)
-if current_selection == "EPOCH":
+if current_selection == "Product2":
     st.sidebar.markdown("---")
     st.sidebar.warning(
         ":rotating_light: When documentation is on shackleton "
